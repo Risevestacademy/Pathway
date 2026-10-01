@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Pathway",
+    "slug": "pathway",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "pathway",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F5F6F8",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {},
+    "extra": {
+      "apiBaseUrl": "https://pathway-backend-a89a738.onrender.com"
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-localization"
+    ]
+  }
+}
