@@ -10,13 +10,24 @@
     "ios": {
       "supportsTablet": true
     },
-    "android": {},
+    "android": {
+      "package": "com.akidisamuel.pathway"
+    },
     "extra": {
       "apiBaseUrl": "https://pathway-backend-a89a738.onrender.com"
     },
     "plugins": [
       "expo-asset",
-      "expo-localization"
+      "expo-localization",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://de.sentry.io/",
+          "organization": "rise-academy-1t",
+          "project": "pathway"
+        }
+      ],
+      "expo-font"
     ]
   }
 }

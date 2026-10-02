@@ -43,3 +43,16 @@ npm start            # expo start
 ```
 
 Quality order before CI: install → lint → typecheck → test → build (EAS).
+
+## Sentry
+
+Sentry error monitoring is initialized from `EXPO_PUBLIC_SENTRY_DSN`. Add the
+project DSN to the ignored `.env` file for local development and to the
+appropriate Expo environment for EAS builds. The DSN is a public client value;
+do not put `SENTRY_AUTH_TOKEN` in the app or commit it.
+
+The Expo plugin is configured for the `rise-academy-1t/pathway` project and
+uploads release source maps during native builds when `SENTRY_AUTH_TOKEN` is
+available. Keep that token in `.env.local` for local builds or as an EAS
+environment secret. Native builds are required to test Sentry on-device; Expo
+Go does not include this native SDK.

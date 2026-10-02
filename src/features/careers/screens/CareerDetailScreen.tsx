@@ -18,7 +18,7 @@ type Props = NativeStackScreenProps<RootStackParamList, "CareerDetail">;
 export function CareerDetailScreen({ navigation, route }: Props) {
   const posthog = usePostHog();
   const { careerId } = route.params;
-  const { detail, detailStatus, loadCareer, pathway } = useCareersStore();
+  const { detail, detailStatus, loadCareer } = useCareersStore();
 
   useEffect(() => {
     void loadCareer(careerId);
