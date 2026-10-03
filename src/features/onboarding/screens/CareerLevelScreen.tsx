@@ -13,12 +13,12 @@ import { CareerLevelCard } from "../components/CareerLevelCard";
 
 type Props = NativeStackScreenProps<RootStackParamList, "CareerLevel">;
 
-const LEVEL_OPTIONS: Array<{
+const LEVEL_OPTIONS: {
   level: CareerLevel;
   title: string;
   description: string;
   icon: "school-outline" | "ribbon-outline" | "briefcase-outline";
-}> = [
+}[] = [
   {
     level: "STUDENT",
     title: "University student",
