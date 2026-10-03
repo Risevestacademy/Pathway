@@ -1,20 +1,27 @@
 {
   "expo": {
     "name": "Pathway",
-    "slug": "pathway",
+    "slug": "pathway-mobile",
     "version": "0.1.0",
     "orientation": "portrait",
     "scheme": "pathway",
     "userInterfaceStyle": "light",
     "backgroundColor": "#F5F6F8",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "android": {
-      "package": "com.akidisamuel.pathway"
+      "package": "com.akidisamuel.pathway",
+      "runtimeVersion": "1.0.0"
     },
     "extra": {
-      "apiBaseUrl": "https://pathway-backend-a89a738.onrender.com"
+      "apiBaseUrl": "https://pathway-backend-a89a738.onrender.com",
+      "eas": {
+        "projectId": "7744ad31-56b9-4f83-94f0-68b214e4bc27"
+      }
     },
     "plugins": [
       "expo-asset",
@@ -28,6 +35,10 @@
         }
       ],
       "expo-font"
-    ]
+    ],
+    "owner": "rise-academy",
+    "updates": {
+      "url": "https://u.expo.dev/7744ad31-56b9-4f83-94f0-68b214e4bc27"
+    }
   }
 }
