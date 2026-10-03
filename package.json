@@ -16,6 +16,7 @@
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/native-stack": "^7.2.0",
     "@sentry/react-native": "~7.11.0",
+    "babel-preset-expo": "~57.0.0",
     "expo": "^57.0.26",
     "expo-application": "~57.0.3",
     "expo-asset": "~57.0.18",
@@ -33,6 +34,9 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
+    "@emnapi/core": "^1.11.3",
+    "@emnapi/runtime": "^1.11.3",
+    "@emnapi/wasi-threads": "^2.1.0",
     "@expo/config-plugins": "~57.0.0",
     "@react-native/jest-preset": "^0.86.3",
     "@testing-library/react-native": "^12.8.1",
