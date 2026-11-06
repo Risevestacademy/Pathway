@@ -7,6 +7,13 @@ import { AboutYouScreen } from "../screens/AboutYouScreen";
 import { useOnboardingStore } from "../store/onboardingStore";
 import type { RootStackParamList } from "@app/navigation/types";
 
+jest.mock("../api/skillsApi", () => ({
+  skillsApi: {
+    listSkills: jest.fn().mockResolvedValue([{ id: "skill-1", name: "Problem-solving" }]),
+  },
+}));
+jest.mock("@app/assets/icons/onboard.svg", () => () => null);
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function renderFlow() {
@@ -45,10 +52,35 @@ describe("CareerLevelScreen", () => {
   });
 
   it("Continue navigates to Step 2 and the selection is preserved", async () => {
-    const { getByTestId, getByText } = renderFlow();
+    const { getAllByText, getByTestId, getByText } = renderFlow();
     fireEvent.press(getByTestId("level-RECENT_GRAD"));
     fireEvent.press(getByTestId("continue-button"));
-    await waitFor(() => expect(getByText("Tell us a bit more")).toBeTruthy());
+    await waitFor(() => expect(getByText("2/3")).toBeTruthy());
+    expect(getAllByText("Tell us a bit more...")).toHaveLength(2);
     expect(useOnboardingStore.getState().level).toBe("RECENT_GRAD");
+  });
+
+  it("loads skills and allows the user to select them", async () => {
+    const { getByTestId } = renderFlow();
+    fireEvent.press(getByTestId("level-STUDENT"));
+    fireEvent.press(getByTestId("continue-button"));
+
+    const skill = await waitFor(() => getByTestId("skill-skill-1"));
+    fireEvent.press(skill);
+
+    expect(skill.props.accessibilityState.checked).toBe(true);
+    expect(useOnboardingStore.getState().skills).toEqual(["Problem-solving"]);
+  });
+
+  it("allows selecting one of the available professions", async () => {
+    const { getByTestId } = renderFlow();
+    fireEvent.press(getByTestId("level-STUDENT"));
+    fireEvent.press(getByTestId("continue-button"));
+
+    await waitFor(() => expect(getByTestId("profession-select")).toBeTruthy());
+    fireEvent.press(getByTestId("profession-select"));
+    fireEvent.press(getByTestId("profession-select-option-business_analyst"));
+
+    expect(useOnboardingStore.getState().profession).toBe("business_analyst");
   });
 });

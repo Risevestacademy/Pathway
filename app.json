@@ -34,7 +34,9 @@
           "project": "pathway"
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-secure-store",
+      "@react-native-google-signin/google-signin"
     ],
     "owner": "rise-academy",
     "updates": {

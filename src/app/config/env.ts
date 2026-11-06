@@ -7,4 +7,7 @@ export const config = {
   apiBaseUrl:
     process.env.EXPO_PUBLIC_API_BASE_URL ??
     "https://pathway-backend-a89a738.onrender.com",
+  googleWebClientId:
+    process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID ??
+    "841483907988-kt6hdrg86mr7hquo89nfn801dp6itq20.apps.googleusercontent.com",
 } as const;

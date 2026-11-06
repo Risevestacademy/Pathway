@@ -7,3 +7,12 @@ jest.mock("posthog-react-native", () => ({
 		logger: { error: jest.fn() },
 	}),
 }));
+
+jest.mock("@react-native-google-signin/google-signin", () => ({
+  GoogleSignin: {
+    configure: jest.fn(),
+    hasPlayServices: jest.fn(async () => true),
+    signIn: jest.fn(async () => ({ type: "cancelled", data: null })),
+    signOut: jest.fn(async () => null),
+  },
+}));
