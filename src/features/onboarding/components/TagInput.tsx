@@ -14,7 +14,11 @@ interface Props {
 
 export function TagInput({ placeholder, tags, onAdd, onRemove, suggestions, testID }: Props) {
   const [text, setText] = useState("");
-  const availableSuggestions = (suggestions ?? []).filter((s) => !tags.includes(s));
+  const availableSuggestions = (suggestions ?? []).filter(
+    (suggestion) =>
+      !tags.includes(suggestion) &&
+      suggestion.toLowerCase().includes(text.trim().toLowerCase()),
+  );
 
   const commit = (value: string) => {
     const trimmed = value.trim();
@@ -50,7 +54,7 @@ export function TagInput({ placeholder, tags, onAdd, onRemove, suggestions, test
           returnKeyType="done"
         />
       </View>
-      {availableSuggestions.length > 0 ? (
+      {text.trim().length > 0 && availableSuggestions.length > 0 ? (
         <View style={styles.suggestions}>
           <Text style={styles.suggestionsLabel}>Suggestions</Text>
           {availableSuggestions.map((suggestion) => (

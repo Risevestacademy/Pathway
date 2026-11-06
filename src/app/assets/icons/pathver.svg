@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" fill="none">
+  <defs>
+    <linearGradient id="circle" x1="38" y1="30" x2="285" y2="285" gradientUnits="userSpaceOnUse"><stop stop-color="#F7F2FF"/><stop offset="1" stop-color="#F9F7FF"/></linearGradient>
+    <linearGradient id="envelope" x1="80" y1="132" x2="237" y2="252" gradientUnits="userSpaceOnUse"><stop stop-color="#D9C5FF"/><stop offset="1" stop-color="#A981EE"/></linearGradient>
+    <linearGradient id="flap" x1="100" y1="186" x2="225" y2="255" gradientUnits="userSpaceOnUse"><stop stop-color="#E7D9FF"/><stop offset="1" stop-color="#BEA1F5"/></linearGradient>
+  </defs>
+  <circle cx="160" cy="160" r="146" fill="url(#circle)"/>
+  <path d="M250 77L266 50" stroke="#9860F5" stroke-width="9" stroke-linecap="round"/>
+  <path d="M268 101L294 93" stroke="#9860F5" stroke-width="9" stroke-linecap="round"/>
+  <rect x="76" y="128" width="168" height="126" rx="16" fill="url(#envelope)"/>
+  <rect x="91" y="94" width="138" height="127" rx="15" fill="white"/>
+  <path d="M118 124H202M118 149H202" stroke="#D9C5FA" stroke-width="8" stroke-linecap="round"/>
+  <path d="M76 149L151 209C156 213 164 213 169 209L244 149V237C244 246 237 254 228 254H92C83 254 76 246 76 237V149Z" fill="url(#envelope)"/>
+  <path d="M76 243L150 188C156 184 164 184 170 188L244 243C242 250 236 254 228 254H92C84 254 78 250 76 243Z" fill="url(#flap)"/>
+</svg>

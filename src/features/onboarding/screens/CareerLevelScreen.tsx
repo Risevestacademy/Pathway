@@ -5,6 +5,7 @@ import { usePostHog } from "posthog-react-native";
 import { ScreenContainer } from "@shared/components/ScreenContainer";
 import { PrimaryButton } from "@shared/components/PrimaryButton";
 import { colors, spacing, typography } from "@shared/design-system/tokens";
+import OnboardIcon from "@app/assets/icons/onboard.svg";
 import type { CareerLevel } from "@shared/types/domain";
 import type { RootStackParamList } from "@app/navigation/types";
 import { useOnboardingStore } from "../store/onboardingStore";
@@ -13,12 +14,12 @@ import { CareerLevelCard } from "../components/CareerLevelCard";
 
 type Props = NativeStackScreenProps<RootStackParamList, "CareerLevel">;
 
-const LEVEL_OPTIONS: Array<{
+const LEVEL_OPTIONS: {
   level: CareerLevel;
   title: string;
   description: string;
   icon: "school-outline" | "ribbon-outline" | "briefcase-outline";
-}> = [
+}[] = [
   {
     level: "STUDENT",
     title: "University student",
@@ -28,13 +29,13 @@ const LEVEL_OPTIONS: Array<{
   {
     level: "RECENT_GRAD",
     title: "Recent graduate",
-    description: "Finished studies within the last couple of years",
+    description: "Currently studying and exploring options",
     icon: "ribbon-outline",
   },
   {
     level: "EARLY_CAREER",
     title: "Early-career professional",
-    description: "A few years into work and looking ahead",
+    description: "Currently studying and exploring options",
     icon: "briefcase-outline",
   },
 ];
@@ -51,8 +52,9 @@ export function CareerLevelScreen({ navigation }: Props) {
   };
 
   return (
-    <ScreenContainer testID="career-level-screen" contentStyle={{ flexGrow: 1 }}>
-      <Text style={styles.step}>Step 1 of 2</Text>
+    <ScreenContainer testID="career-level-screen" contentStyle={styles.content}>
+      <OnboardIcon width={28} height={28} style={styles.icon} />
+      <Text style={styles.step}>1/3</Text>
       <Text style={styles.title}>Where are you in your career?</Text>
       <Text style={styles.subtitle}>
         {"We'll put the most relevant careers first. You can change this any time."}
@@ -75,24 +77,22 @@ export function CareerLevelScreen({ navigation }: Props) {
 
       <View style={styles.footer}>
         <PrimaryButton
-          title="Continue"
+          title="Next"
           testID="continue-button"
           disabled={!canContinue}
           onPress={() => navigation.navigate("AboutYou")}
         />
-        <Text style={styles.note}>
-          No account needed. Your answers are kept only for this browsing session.
-        </Text>
       </View>
     </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  step: { ...typography.caption, color: colors.textSecondary, marginBottom: spacing.xs },
-  title: { ...typography.title, color: colors.text, marginBottom: spacing.sm },
-  subtitle: { ...typography.body, color: colors.textSecondary, marginBottom: spacing.xxl },
+  content: { flexGrow: 1, backgroundColor: colors.surface, borderRadius: 28, paddingTop: spacing.xxxl },
+  icon: { marginBottom: spacing.md },
+  step: { ...typography.caption, color: colors.primary, marginBottom: spacing.xs },
+  title: { ...typography.sectionTitle, color: colors.text, marginBottom: spacing.sm },
+  subtitle: { ...typography.caption, color: colors.textSecondary, marginBottom: spacing.xxl },
   options: { marginBottom: spacing.xl },
-  footer: { marginTop: "auto", gap: spacing.lg },
-  note: { ...typography.caption, color: colors.textSecondary, textAlign: "center" },
+  footer: { marginTop: "auto", paddingTop: spacing.xl },
 });

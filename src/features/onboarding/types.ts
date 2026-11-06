@@ -1,19 +1,21 @@
 export interface AboutYouAnswers {
   /** Display-only values; not sent to any API for the demo. */
+  profession: string | null;
   highestQualification: string | null;
   fieldOfStudy: string | null;
   yearsOfWork: string | null;
   internships: string | null;
   skills: string[];
   interests: string[];
+  goal: string | null;
+  roadmapTime: string | null;
 }
 
-export const QUALIFICATION_OPTIONS = [
-  { label: "Secondary school", value: "secondary" },
-  { label: "Bachelor's degree", value: "bachelors" },
-  { label: "Master's degree", value: "masters" },
-  { label: "PhD", value: "phd" },
-  { label: "Bootcamp / certification", value: "bootcamp" },
+export const PROFESSION_OPTIONS = [
+  { label: "Graduate", value: "graduate" },
+  { label: "Doctor", value: "doctor" },
+  { label: "Business Analyst", value: "business_analyst" },
+  { label: "Freelancer", value: "freelancer" },
 ] as const;
 
 export const YEARS_OF_WORK_OPTIONS = [
@@ -30,13 +32,15 @@ export const INTERNSHIP_OPTIONS = [
   { label: "3+ internships", value: "3+" },
 ] as const;
 
-/** TEMPORARY static skill suggestions (from the design). Replace with the
- *  onboarding-values endpoint when the backend ships it. */
-export const SKILL_SUGGESTIONS = [
-  "JavaScript",
-  "Python",
-  "SQL",
-  "Excel",
-  "Design",
-  "Communication",
+export const GOAL_OPTIONS = [
+  { label: "Explore career options", value: "explore" },
+  { label: "Build new skills", value: "build_skills" },
+  { label: "Change careers", value: "career_change" },
+  { label: "Advance in my career", value: "advance" },
+] as const;
+
+export const ROADMAP_OPTIONS = [
+  { label: "A few hours per week", value: "few_hours" },
+  { label: "5-10 hours per week", value: "5_10_hours" },
+  { label: "10+ hours per week", value: "10_plus_hours" },
 ] as const;
